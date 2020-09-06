@@ -1,3 +1,4 @@
+import os
 import json
 import numpy as np
 
@@ -141,6 +142,8 @@ class Meta(object):
 
         skeleton = Skeleton()
 
+        filename = os.path.splitext(meta_name)[0]
+
         with open(meta_name, 'r') as meta:
             json_data = json.load(meta)
 
@@ -153,7 +156,6 @@ class Meta(object):
 
                 if joints[name] >= 0:
                     skeleton.add_joint(joints[name], name)
-
                     inc_names.append(name)
 
             skeleton.sort_bones()
@@ -163,6 +165,10 @@ class Meta(object):
 
                 if parent is not None:
                     skeleton.add_bone(name, parent)
+
+            with open(filename + "_selection.json", 'w') as joints:
+                json.dump(inc_names, joints)
+                joints.close()
 
             meta.close()
 
