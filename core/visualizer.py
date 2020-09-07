@@ -1,4 +1,3 @@
-import mpld3
 import numpy as np
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -32,7 +31,7 @@ class Visualizer(object):
     def show_figure(self):
         plt.show()
 
-    def plot_2d(self, joints=None, parents=None,
+    def plot_2d(self, joints=None, parents=None, names=None,
                 left=None, right=None, subplot=None):
 
         if subplot is None:
@@ -43,11 +42,16 @@ class Visualizer(object):
 
         if joints is None:
             joints = np.vstack(self._jnt_indices.values())
+        else:
+            joints = [self._jnt_indices[names[i]] for i in range(len(joints))]
+            joints = np.vstack(joints)
 
         if parents is None:
             parents = self._get_default_parents()
 
-        names = list(self._jnt_indices)
+        if names is None:
+            names = list(self._jnt_indices)
+
         labels = [str(i) + ". " + names[i] for i in range(len(names))]
         subplot.scatter(joints[:, 0], joints[:, 1])
 

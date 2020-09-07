@@ -27,9 +27,15 @@ class MidasArgs(object):
             default=False, type=bool,
             help="Plot dummy skeleton from picked joints"
         )
+        self._parser.add_argument(
+            "-ppj", "--plot-picked-joints",
+            default=False, type=bool,
+            help="Plot picked joints skeleton"
+        )
 
     def parse(self):
         skeleton = None
+        picked_joints = None
 
         args = self._parser.parse_args()
 
@@ -43,7 +49,19 @@ class MidasArgs(object):
             assert skeleton is not None, \
                 "You have to parse meta to generate skeleton first."
 
-            print(handler.pick_joints(skeleton, args.pick_joints))
+            picked_joints = handler.pick_joints(skeleton, args.pick_joints)
 
         if args.plot_dummy:
             handler.plot_dummy()
+
+        elif args.plot_picked_joints:
+            assert picked_joints is not None, \
+                "You need to pick joints first"
+
+            handler.plot_picked_joints(
+                picked_joints['joints'],
+                picked_joints['parents'],
+                picked_joints['left'],
+                picked_joints['right'],
+                picked_joints['names']
+            )

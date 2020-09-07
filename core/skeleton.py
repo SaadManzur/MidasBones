@@ -80,7 +80,8 @@ class Skeleton(object):
             "joints": joints,
             "parents": parents,
             "left": left,
-            "right": right
+            "right": right,
+            "names": jnt_names
         }
 
     def __str__(self):

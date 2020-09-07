@@ -1,8 +1,7 @@
 import json
 
-from matplotlib.pyplot import sca
-
 from core.meta import Meta
+import core.constants as const
 from core.visualizer import Visualizer
 
 
@@ -25,4 +24,10 @@ def pick_joints(skeleton, filename):
 def plot_dummy():
     visualizer = Visualizer()
     visualizer.plot_2d()
+    visualizer.show_figure()
+
+
+def plot_picked_joints(joints, parents, left, right, names):
+    visualizer = Visualizer()
+    visualizer.plot_2d(joints, parents, names, left, right)
     visualizer.show_figure()
