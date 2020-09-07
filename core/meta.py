@@ -63,62 +63,7 @@ class Meta(object):
             const.LHAND_SITE4: -1
         }
 
-        self._parents = {
-            const.HIP: None,
-            const.RHIP: const.HIP,
-
-            const.RHIP_KNEE: const.RHIP,
-            const.RKNEE: const.RHIP_KNEE,
-            const.RKNEE_ANKLE: const.RKNEE,
-            const.RANKLE: const.RKNEE_ANKLE,
-            const.RANKLE_FOOT: const.RANKLE,
-            const.RFOOT: const.RANKLE_FOOT,
-
-            const.LHIP: const.HIP,
-            const.LHIP_KNEE: const.LHIP,
-            const.LKNEE: const.LHIP_KNEE,
-            const.LKNEE_ANKLE: const.LKNEE,
-            const.LANKLE: const.LKNEE_ANKLE,
-            const.LANKLE_FOOT: const.LANKLE,
-            const.LFOOT: const.LANKLE_FOOT,
-
-            const.SPINE1: const.HIP,
-            const.SPINE1_2: const.SPINE1,
-            const.SPINE2: const.SPINE1_2,
-            const.SPINE2_3: const.SPINE2,
-            const.SPINE3: const.SPINE2_3,
-            const.SPINE3_4: const.SPINE3,
-            const.SPINE4: const.SPINE4,
-            const.SPINE4_NECK: const.SPINE4,
-
-            const.NECK: const.SPINE4_NECK,
-            const.NOSE: const.NECK,
-            const.HEAD: const.NOSE,
-
-            const.RSHOULDER: const.NECK,
-            const.RUPPERARM: const.RSHOULDER,
-            const.RSHOULDER_ELBOW: const.RUPPERARM,
-            const.RELBOW: const.RSHOULDER_ELBOW,
-            const.RELBOW_WRIST: const.RELBOW,
-            const.RWRIST: const.RELBOW_WRIST,
-            const.RHAND: const.RWRIST,
-            const.RHAND_SITE1: const.RHAND,
-            const.RHAND_SITE2: const.RHAND,
-            const.RHAND_SITE3: const.RHAND,
-            const.RHAND_SITE4: const.RHAND,
-
-            const.LSHOULDER: const.NECK,
-            const.LUPPERARM: const.LSHOULDER,
-            const.LSHOULDER_ELBOW: const.LUPPERARM,
-            const.LELBOW: const.LSHOULDER_ELBOW,
-            const.LELBOW_WRIST: const.LELBOW,
-            const.LWRIST: const.LELBOW_WRIST,
-            const.LHAND: const.LWRIST,
-            const.LHAND_SITE1: const.LHAND,
-            const.LHAND_SITE2: const.LHAND,
-            const.LHAND_SITE3: const.LHAND,
-            const.LHAND_SITE4: const.LHAND
-        }
+        self._parents = const.DEFAULT_PARENTS.copy()
 
         self._cameras = [
             {
