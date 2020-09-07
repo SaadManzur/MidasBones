@@ -17,3 +17,6 @@ Pick joints from a json file's array, the array will have the joint keys from th
 
 ```-pd, --plot-dummy```
 Plot a dummy skeleton to show what joints are picked
+
+```-ppj, --plot-picked-joints```
+Plot dummy skeleton on picked joints
